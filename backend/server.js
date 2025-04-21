@@ -5,6 +5,7 @@ const authRoutes = require('./routes/auth.js');
 const applicationRoutes = require('./routes/application.js');
 const path = require('path');
 require('dotenv').config();
+
 const app = express();
 const port = process.env.PORT || 5000;
 const mongoDBLink = process.env.MONGO_URL;
@@ -16,20 +17,6 @@ app.use(express.json());
 // Then define API routes
 app.use('/api', authRoutes);
 app.use('/api', applicationRoutes);
-
-// Finally, set up static file serving and catch-all route for frontend
-// app.use(express.static(path.join(__dirname, '../frontend/build')));
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
-// });
-
-// if (process.env.NODE_ENV == 'production') {
-//   app.use(express.static(path.join(__dirname, '../frontend/build')));
-//   app.get("*", (req, res) => {
-//     res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
-//   });
-// }
-
 
 const connectDB = async () => {
   try {
@@ -43,15 +30,10 @@ const connectDB = async () => {
 
 connectDB();
 
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
-// });
-
 if (process.env.NODE_ENV === 'production') {
   const buildPath = path.join(__dirname, '../frontend/build');
   app.use(express.static(buildPath));
-
-  app.get('*', (req, res) => {
+  app.get('/*', (req, res) => {
     res.sendFile(path.join(buildPath, 'index.html'));
   });
 }
