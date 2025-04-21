@@ -1,11 +1,13 @@
 import ApplicationForm from "./pages/ApplicationForm";
 import Login from "./pages/Login";
 import RegisterForm from "./pages/Register";
+import { Navigate } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute'; // Import your wrapper
 import HomePage from './pages/HomePage'; // You can create this or reuse an existing component
 
 function App() {
+  
   return (
     <Router>
       <Routes>
@@ -20,6 +22,7 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
   );

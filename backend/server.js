@@ -12,7 +12,7 @@ const port = process.env.PORT || 5000;
 const mongoDBLink = process.env.MONGO_URL;
 
 // Apply middleware first
-app.use(cors());
+//app.use(cors());
 app.use(express.json());
 
 // Then define API routes
@@ -47,7 +47,7 @@ if (process.env.NODE_ENV === 'production') {
   const buildPath = path.join(__dirname, '../frontend/build');
   console.log(buildPath);
   app.use(express.static(buildPath));
-  app.get('/*', (req, res) => {
+  app.get('*', (req, res) => {
     res.sendFile(path.join(buildPath, 'index.html'));
   });
 }
