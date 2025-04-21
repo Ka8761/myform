@@ -19,6 +19,18 @@ app.use(express.json());
 app.use('/api', authRoutes);
 app.use('/api', applicationRoutes);
 
+// Add this to a temporary script or your server startup
+const db = mongoose.connection;
+
+// db.once('open', async () => {
+//   try {
+//     await db.collection('users').dropIndex('username_1');
+//     console.log('Successfully dropped username index');
+//   } catch (err) {
+//     console.log('Error dropping index or index doesn\'t exist:', err);
+//   }
+// });
+
 const connectDB = async () => {
   try {
     await mongoose.connect(mongoDBLink);

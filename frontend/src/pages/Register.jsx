@@ -104,6 +104,10 @@ function RegisterForm() {
       <p className="login-link">
         Already have an account? <Link to="/login">Log in</Link>
       </p>
+      
+      <p className="login-link" >
+        Go home? <Link to="/" style={{color:'blue'}}>Home</Link>
+      </p>
     </div>
   );
 }

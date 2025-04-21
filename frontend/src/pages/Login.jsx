@@ -73,6 +73,9 @@ function LoginForm() {
         </div>
         <button type="submit">Log In</button>
         <p>Don't have an account? <Link to='/register'>Register</Link></p>
+           <p>
+                Go home? <Link to="/">Home</Link>
+              </p>
       </form>
     </div>
   );

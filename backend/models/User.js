@@ -6,7 +6,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true, // Remove whitespace from both ends of a string
-    unique: true, // Ensure usernames are unique in the database
+// Ensure usernames are unique in the database
     minlength: 3, // Optional: Minimum length for username
     maxlength: 30, // Optional: Maximum length for username
   },
