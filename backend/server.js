@@ -13,6 +13,10 @@ const mongoDBLink = process.env.MONGO_URL;
 
 // Apply middleware first
 //app.use(cors());
+app.use(cors({
+  origin: '*', // or use the actual IP of the frontend
+  credentials: true
+}));
 app.use(express.json());
 
 // Then define API routes
@@ -69,7 +73,7 @@ if (process.env.NODE_ENV === 'production') {
   });
 
 
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
   console.log(`Server listening on port ${port}`);
 });
 
